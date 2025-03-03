@@ -7,8 +7,7 @@ public class AIMover : MonoBehaviour
 {
     [SerializeField] List<Transform> _checkPoints;
     [SerializeField] NavMeshAgent _agent;
-    [SerializeField] float _speed = 6f;
-
+    [SerializeField] Animator _animator;
 
     int _checkPointIndex = 0;
     private void Update()
@@ -35,6 +34,7 @@ public class AIMover : MonoBehaviour
     void MoveToCheckPoint()
     {
         _agent.MoveToSpeedster(_checkPoints[_checkPointIndex].position);
+        _animator.ChangeAnimationSpeed();
     }
 
 }

@@ -65,6 +65,19 @@ namespace Speedsters
             agent.destination = offset;
         }
         #endregion
+        public static void ChangeAnimationSpeed(this Animator animator)
+        {
+            GetSpeedsterManager();
+            if (_speedsterManager == null)
+                return;
+            float speed = _speedsterManager.GetSpeedsterSpeed();
+            if (_speedsterManager.IsInSpeedMode())
+            {
+                animator.speed = 1f / speed;
+                return;
+            }
+            animator.speed = 1;
+        }
         static SpeedsterManager GetSpeedsterManager()
         {
             if(_speedsterManager == null || _speedsterManager.IsDestroyed())
